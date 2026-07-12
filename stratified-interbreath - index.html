@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stratified Interbreath — Canopy Breath Zone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canopy-deep:#16281F;
+  --understory:#23392C;
+  --bark:#6B4A35;
+  --moss:#8FAD6B;
+  --canopy-light:#C9D9B4;
+  --dawn:#E0A458;
+  --dawn-soft: rgba(224,164,88,0.35);
+  --mist:#F1EEE3;
+  --mist-dim: rgba(241,238,227,0.62);
+  --line: rgba(241,238,227,0.14);
+  --line-dark: rgba(22,40,31,0.14);
+  --radius:4px;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--mist);
+  color:var(--canopy-deep);
+  font-family:'Greycliff CF','IBM Plex Sans',sans-serif;
+  line-height:1.6;
+}
+h1{font-family:'Cooper BT','Cooper Black',Georgia,serif; font-weight:600; color:var(--canopy-deep); line-height:1.05;}
+h2{font-family:'Bebas Neue','Arial Narrow',sans-serif; font-weight:400; letter-spacing:.045em; color:var(--canopy-deep); line-height:1.05;}
+h3,.display{font-family:'Times New Roman',Times,serif; font-weight:700; color:var(--canopy-deep); line-height:1.15;}
+.mono{font-family:'IBM Plex Mono', monospace; letter-spacing:0.03em;}
+.hand{font-family:'Caveat', cursive; font-weight:600;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+.eyebrow{font-family:'Gulfs Display','Bebas Neue','Arial Narrow',sans-serif; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--moss);}
+
+/* ================= HERO (dark canopy) ================= */
+.hero{
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(143,173,107,0.25), transparent 55%),
+    radial-gradient(ellipse at 85% 85%, rgba(224,164,88,0.14), transparent 55%),
+    var(--canopy-deep);
+  color:var(--mist);
+  padding:90px 28px 70px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero-eyebrow{
+  display:inline-flex; align-items:center; gap:10px;
+  border:1px dashed var(--dawn); border-radius:30px;
+  padding:6px 18px; margin-bottom:26px;
+  font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--dawn);
+}
+.hero h1{
+  color:var(--mist);
+  font-size:clamp(40px, 7vw, 74px);
+  letter-spacing:-0.01em;
+  margin-bottom:6px;
+}
+.hero-zone-tag{
+  margin-top:22px;
+  display:inline-block;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:13px; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--canopy-light);
+  border-top:1px solid var(--line); padding-top:14px;
+}
+
+/* ================= PHILOSOPHY / AIM / OBJECTIVES ================= */
+.section{padding:70px 0;}
+.section-narrow{max-width:760px; margin:0 auto; padding:0 28px; text-align:center;}
+.philosophy h3{font-size:clamp(22px,3.4vw,32px); max-width:680px; margin:0 auto 16px;}
+.philosophy .fine{
+  font-family:'Caveat', cursive; font-weight:600; font-size:19px;
+  color:var(--bark); max-width:560px; margin:0 auto;
+}
+
+.aim-block{
+  background:var(--understory); color:var(--mist);
+  border-radius:18px; padding:44px 40px; max-width:760px; margin:0 auto;
+  text-align:left;
+}
+.aim-block .eyebrow{color:var(--dawn); margin-bottom:10px; display:block;}
+.aim-block h3{color:var(--mist); font-size:24px; margin-bottom:14px;}
+.aim-block p{color:var(--mist-dim); font-size:15.5px;}
+
+.obj-head{text-align:center; margin-bottom:36px;}
+.obj-head h3{font-size:clamp(22px,3.4vw,30px);}
+.objectives-grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px; max-width:1180px; margin:0 auto; padding:0 28px;
+}
+.obj-card{
+  background:#fff; border:1px solid var(--line-dark); border-radius:14px;
+  padding:26px 24px; position:relative; overflow:hidden;
+}
+.obj-card::before{
+  content:attr(data-n);
+  position:absolute; top:-6px; right:10px;
+  font-family:'Fraunces', serif; font-weight:700; font-size:70px;
+  color:rgba(110,154,92,0.1);
+}
+.obj-card p.body-text{font-size:14.5px; color:var(--canopy-deep); margin-bottom:16px; position:relative; z-index:1;}
+.obj-tag{
+  display:inline-block; background:rgba(143,173,107,0.14); color:var(--understory);
+  padding:6px 12px; border-radius:20px; font-size:12px; font-weight:600; margin-bottom:6px;
+}
+.obj-sub{font-family:'Caveat',cursive; font-weight:600; font-size:15px; color:var(--bark); display:block;}
+
+/* ================= MAP SECTION ================= */
+.map-section{background:var(--understory); color:var(--mist); padding:80px 0;}
+.map-head{text-align:center; max-width:720px; margin:0 auto 34px; padding:0 28px;}
+.map-head .eyebrow{color:var(--dawn);}
+.map-head h2{color:var(--mist); font-size:clamp(24px,3.6vw,34px); margin:8px 0 10px;}
+.map-head p{color:var(--mist-dim); font-size:14.5px;}
+
+.map-layout{
+  display:grid; grid-template-columns:1fr 300px; gap:22px;
+  max-width:1180px; margin:0 auto; padding:0 28px;
+  align-items:start;
+}
+@media (max-width:900px){.map-layout{grid-template-columns:1fr;}}
+
+.map-canvas-wrap{
+  background:var(--canopy-deep); border-radius:16px; border:1px solid rgba(241,238,227,0.1);
+  overflow:hidden; position:relative;
+}
+#patchSvg{width:100%; height:auto; display:block;}
+.patch-shape{cursor:pointer; transition:filter 0.2s ease;}
+.patch-shape:hover{filter:brightness(1.2);}
+.patch-shape.selected{filter:brightness(1.3);}
+.patch-label{
+  font-family:'IBM Plex Mono', monospace; font-size:9.5px; fill:var(--mist);
+  text-anchor:middle; pointer-events:none; opacity:0.85;
+}
+.corridor-line{fill:none; stroke:var(--dawn); stroke-opacity:0.55; stroke-width:1.3; stroke-dasharray:2 7; animation:driftFlow 5s linear infinite;}
+@keyframes driftFlow{ to{ stroke-dashoffset:-40; } }
+.boardwalk-line{fill:none; stroke:var(--mist); stroke-opacity:0.3; stroke-width:2.4; stroke-dasharray:1 6; stroke-linecap:round;}
+.move-arrow{fill:var(--dawn); opacity:0.9;}
+
+.map-side{display:flex; flex-direction:column; gap:14px;}
+.map-panel{
+  background:rgba(241,238,227,0.06); border:1px solid rgba(241,238,227,0.14);
+  border-radius:12px; padding:16px 18px;
+}
+.map-panel h4{color:var(--mist); font-size:14px; margin-bottom:10px;}
+.legend-scroll{max-height:230px; overflow-y:auto; display:flex; flex-direction:column; gap:7px; padding-right:4px;}
+.legend-row{display:flex; align-items:center; gap:8px; font-size:11.5px; color:var(--mist-dim); cursor:pointer; padding:3px 4px; border-radius:6px;}
+.legend-row:hover, .legend-row.active{background:rgba(241,238,227,0.08); color:var(--mist);}
+.legend-dot{width:11px; height:11px; border-radius:50%; flex-shrink:0; border:1px solid rgba(241,238,227,0.3);}
+
+.detail-empty{font-size:12.5px; color:var(--mist-dim); line-height:1.6;}
+.detail-title{color:var(--dawn); font-family:'Fraunces',serif; font-size:17px; margin-bottom:8px;}
+.detail-row{display:flex; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed rgba(241,238,227,0.16); font-size:12px;}
+.detail-row:last-child{border-bottom:none;}
+.detail-row .k{color:var(--mist-dim);}
+.detail-row .v{text-align:right; color:var(--mist);}
+
+.map-legend-key{display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin:26px 28px 0; font-size:11.5px; color:var(--mist-dim);}
+.map-legend-key span{display:inline-flex; align-items:center; gap:6px;}
+.key-swatch{width:14px; height:3px; border-radius:2px;}
+
+/* ================= SPECIES SPOTLIGHT ================= */
+.species-section{padding:80px 0;}
+.species-grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px; max-width:1180px; margin:0 auto; padding:0 28px;
+}
+.flip-card{
+  perspective:1400px; height:340px; cursor:pointer;
+}
+.flip-inner{
+  position:relative; width:100%; height:100%;
+  transform-style:preserve-3d; transition:transform 0.6s cubic-bezier(.4,.2,.2,1);
+}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-face{
+  position:absolute; inset:0; backface-visibility:hidden;
+  border-radius:16px; padding:22px;
+  display:flex; flex-direction:column;
+  border:1px solid var(--line-dark);
+}
+.flip-front{
+  background:linear-gradient(160deg, rgba(143,173,107,0.16), rgba(224,164,88,0.1)), #fff;
+  align-items:center; justify-content:center; text-align:center; gap:14px;
+}
+.flip-icon{font-size:56px; display:inline-block;}
+.anim-swing{animation:swing 2.6s ease-in-out infinite;}
+.anim-bob{animation:bob 2.4s ease-in-out infinite;}
+.anim-sway{animation:sway 3.2s ease-in-out infinite;}
+@keyframes swing{ 0%,100%{transform:rotate(-14deg);} 50%{transform:rotate(14deg);} }
+@keyframes bob{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+@keyframes sway{ 0%,100%{transform:rotate(-6deg) translateX(-2px);} 50%{transform:rotate(6deg) translateX(2px);} }
+.flip-front h3{font-size:18px;}
+.flip-front .tap-hint{font-family:'Caveat',cursive; font-weight:600; color:var(--bark); font-size:14px;}
+.flip-back{
+  background:var(--understory); color:var(--mist);
+  transform:rotateY(180deg);
+  overflow-y:auto; gap:10px;
+}
+.flip-back h3{color:var(--dawn); font-size:16px;}
+.flip-back .field-label{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--moss); margin-top:4px;}
+.flip-back ul{list-style:none; font-size:12px; color:var(--mist-dim); display:flex; flex-direction:column; gap:3px;}
+.flip-back .fun-fact{font-family:'Caveat',cursive; font-weight:600; font-size:14.5px; color:var(--canopy-light); line-height:1.4;}
+.observe-chip{display:inline-flex; align-items:center; gap:5px; background:rgba(224,164,88,0.14); color:var(--dawn); padding:3px 9px; border-radius:14px; font-size:10.5px; margin:2px 4px 0 0;}
+.observe-row{display:flex; flex-wrap:wrap;}
+
+/* ================= RESEARCH BOOK ================= */
+.research-section{background:linear-gradient(180deg,#e5eadb 0%,var(--mist) 100%); padding:88px 0; overflow:hidden;}
+.research-head{text-align:center; max-width:760px; margin:0 auto 38px; padding:0 28px;}
+.research-head h1{font-size:clamp(38px,6vw,62px); margin:8px 0 14px;}
+.research-head p{font-family:'Times New Roman',serif; font-size:18px; line-height:1.55;}
+.research-book{max-width:1080px; min-height:535px; margin:0 auto 30px; display:grid; grid-template-columns:1fr 1fr; border-radius:8px; overflow:hidden; box-shadow:0 20px 40px rgba(22,40,31,.22); background:#f7f0dd; position:relative;}
+.research-book:after{content:''; position:absolute; top:0; bottom:0; left:50%; width:18px; transform:translateX(-50%); background:linear-gradient(90deg,rgba(64,40,24,.19),rgba(255,255,255,.55),rgba(64,40,24,.15)); pointer-events:none;}
+.book-page{padding:42px clamp(25px,4vw,52px); background:radial-gradient(circle at 10% 10%,rgba(224,164,88,.12),transparent 26%),#fbf6e9; position:relative;}
+.book-page:first-child{border-radius:8px 0 0 8px;}.book-page:last-child{border-radius:0 8px 8px 0;}
+.book-page h2{font-size:36px; margin:7px 0 14px;}.book-page p{font-size:14px; margin-bottom:16px;}.book-num{font-family:'Bebas Neue',sans-serif; color:var(--bark); letter-spacing:.12em; font-size:15px;}
+.forest-cut{height:225px; margin:18px 0; position:relative; border-bottom:5px solid var(--understory); background:linear-gradient(to top,#35533d 0 22%,#557147 22% 48%,#789554 48% 72%,#b5c987 72% 100%); overflow:hidden; border-radius:5px;}
+.forest-cut:before{content:''; position:absolute; inset:0; opacity:.55; background:repeating-linear-gradient(105deg,transparent 0 18px,rgba(22,40,31,.14) 19px 22px,transparent 23px 48px);}
+.tree{position:absolute; bottom:0; width:7px; background:var(--bark); border-radius:8px 8px 0 0;}.tree:after{content:''; position:absolute; width:62px; height:62px; border-radius:50%; background:var(--understory); left:50%; transform:translateX(-50%); top:-33px; box-shadow:-22px 15px 0 -4px #476843,20px 12px 0 -5px #6b8e55;}.tree.t1{height:160px;left:18%;}.tree.t2{height:205px;left:53%;}.tree.t3{height:120px;left:79%;}.tree.t2:after{width:83px;height:83px;top:-45px;}.primate{position:absolute;font-size:33px;z-index:2;filter:drop-shadow(0 2px 1px rgba(0,0,0,.2));}.primate.one{top:25px;left:53%;}.primate.two{top:90px;left:19%;}
+.layer-label{position:absolute; right:8px; font-family:'Bebas Neue',sans-serif; font-size:11px; letter-spacing:.08em; color:rgba(22,40,31,.75);}.l1{top:11px}.l2{top:64px}.l3{top:119px}.l4{bottom:8px}
+.page-tabs{display:flex; flex-wrap:wrap; gap:7px; margin:14px 0 18px;}.page-tab{border:1px solid rgba(22,40,31,.2); color:var(--understory); background:transparent; padding:6px 8px; border-radius:14px; font-size:10px; cursor:pointer; font-family:'Greycliff CF','IBM Plex Sans',sans-serif;}.page-tab.active,.page-tab:hover{background:var(--understory); color:var(--mist);}
+.book-copy h3{font-size:22px; margin-bottom:8px;}.book-copy ul{padding-left:18px; font-size:13px; line-height:1.65;}.book-copy li::marker{color:var(--dawn);}.book-detail{min-height:160px;}.rating{color:var(--dawn); letter-spacing:2px; font-size:13px;}.did-you-know{background:var(--understory); color:var(--mist); padding:18px; border-radius:5px; margin-top:18px;}.did-you-know h3{color:var(--dawn); font-size:20px;}.did-you-know p{font-size:12px; color:var(--mist-dim); margin:7px 0 0;}
+.book-instruction{text-align:center;font-family:'Caveat',cursive;font-size:18px;color:var(--bark);}
+
+/* ================= EXPERIENCES + REWARDS ================= */
+.experience-section{padding:88px 0; background:var(--canopy-deep); color:var(--mist);}.experience-head{text-align:center; margin-bottom:36px; padding:0 28px;}.experience-head .eyebrow{color:var(--dawn);}.experience-head h2{color:var(--mist);font-size:clamp(36px,5vw,52px);margin-top:7px;}.experience-head p{color:var(--mist-dim);font-family:'Times New Roman',serif;font-size:17px;}
+.reward-bar{max-width:1124px;margin:0 auto 28px;padding:16px 20px;border:1px solid rgba(241,238,227,.2);border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(241,238,227,.07);}.reward-bar h3{color:var(--mist);font-size:18px;}.reward-points{font-family:'Bebas Neue',sans-serif;color:var(--dawn);font-size:32px;letter-spacing:.06em;white-space:nowrap;}.reward-points small{font-family:'Greycliff CF','IBM Plex Sans',sans-serif;font-size:11px;color:var(--mist-dim);letter-spacing:0;}
+.experience-grid{max-width:1124px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}.experience-card{border:1px solid rgba(241,238,227,.17);border-radius:10px;padding:23px;background:rgba(241,238,227,.05);display:flex;flex-direction:column;align-items:flex-start;}.experience-card.featured{grid-column:span 2;background:linear-gradient(130deg,rgba(143,173,107,.24),rgba(224,164,88,.1));}.experience-card h3{color:var(--mist);font-size:20px;margin:7px 0;}.experience-card p,.experience-card li{font-size:12.5px;color:var(--mist-dim);}.experience-card ul{padding-left:16px;margin:7px 0 14px;}.meta{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:11.5px;margin:8px 0 15px;color:var(--mist-dim);}.meta b{color:var(--canopy-light);font-weight:600;}.book-btn{border:0;border-radius:20px;background:var(--dawn);color:var(--canopy-deep);padding:9px 14px;font-weight:700;font-size:12px;cursor:pointer;margin-top:auto;}.book-btn:disabled{background:var(--moss);cursor:default;}.choice-note{border-left:2px solid var(--dawn);padding-left:10px;margin-top:10px;font-family:'Times New Roman',serif;font-size:13px;color:var(--mist);}
+@media(max-width:700px){.research-book{grid-template-columns:1fr;}.research-book:after{display:none}.book-page:first-child,.book-page:last-child{border-radius:0}.experience-card.featured{grid-column:span 1}.reward-bar{margin-left:28px;margin-right:28px}.experience-grid{padding:0 28px;}}
+
+footer{text-align:center; padding:34px 20px 46px; font-size:12px; color:var(--bark); border-top:1px solid var(--line-dark);}
+
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-thumb{background:rgba(241,238,227,0.2); border-radius:3px;}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-eyebrow">✦ Canopy Concept ✦</div>
+  <h1>Stratified Interbreath</h1>
+  <div class="hero-zone-tag">Canopy Breath Zone</div>
+</section>
+
+<!-- ================= PHILOSOPHY ================= -->
+<section class="section philosophy">
+  <div class="section-narrow">
+    <h3>Design follows nature — self-contained micro-worlds for arboreal primates.</h3>
+    <p class="fine">Think of it as a new "ecological world" for arboreal primates — where breath doesn't move horizontally only — it flows up and down.</p>
+  </div>
+</section>
+
+<!-- ================= AIM ================= -->
+<section class="section" style="padding-top:0;">
+  <div class="aim-block">
+    <span class="eyebrow">Aim</span>
+    <h3>What This Framework Is Built To Do</h3>
+    <p>To develop an immersive bio-centric arboreal primate habitat that promotes ecological complexity, competence, environmental choice, and control for diverse natural behaviours.</p>
+  </div>
+</section>
+
+<!-- ================= OBJECTIVES ================= -->
+<section class="section" style="padding-top:20px;">
+  <div class="obj-head">
+    <span class="eyebrow">Framework</span>
+    <h3>Objectives</h3>
+  </div>
+  <div class="objectives-grid">
+    <div class="obj-card" data-n="01">
+      <p class="body-text">To develop a tropical rainforest habitat that integrates environmental performance.</p>
+      <span class="obj-tag">Complexity</span>
+      <span class="obj-sub">Environmental foundation (climate + function)</span>
+    </div>
+    <div class="obj-card" data-n="02">
+      <p class="body-text">To establish a spatial system that enhances ecological agency to exhibit natural behaviours.</p>
+      <span class="obj-tag">Competence + Choice</span>
+      <span class="obj-sub">Spatial system (complexity + connectivity)</span>
+    </div>
+    <div class="obj-card" data-n="03">
+      <p class="body-text">To design an adaptive habitat that enhances immersive and educational visitor experience.</p>
+      <span class="obj-tag">Control + Variable</span>
+      <span class="obj-sub">Experience (enrichment + coexistence)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MAP ================= -->
+<section class="map-section" id="mapSection">
+  <div class="map-head">
+    <span class="eyebrow">Patch-to-Patch Habitat Network</span>
+    <h2>One Continuous Living Rainforest</h2>
+    <p>Fourteen ecological identities, blended into a single canopy mosaic — connected by corridors, crossed only lightly by a timber boardwalk.</p>
+  </div>
+  <div class="map-layout">
+    <div class="map-canvas-wrap">
+      <svg id="patchSvg" viewBox="0 0 1150 700" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+    <div class="map-side">
+      <div class="map-panel">
+        <h4>Habitat Legend</h4>
+        <div class="legend-scroll" id="legendScroll"></div>
+      </div>
+      <div class="map-panel">
+        <h4>Selected Patch</h4>
+        <div id="patchDetail"><div class="detail-empty">Click any patch — or a legend item — to see its ecological identity.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="map-legend-key">
+    <span><span class="key-swatch" style="background:var(--dawn)"></span>Ecological corridor (animal flow)</span>
+    <span><span class="key-swatch" style="background:var(--mist); opacity:0.5"></span>Timber boardwalk (visitor circulation)</span>
+  </div>
+</section>
+
+<!-- ================= SPECIES SPOTLIGHT ================= -->
+<section class="species-section" id="species">
+  <div class="obj-head">
+    <span class="eyebrow">Meet The Canopy</span>
+    <h3>Species Spotlights</h3>
+    <p style="color:var(--bark); font-size:13.5px; margin-top:8px;">Tap a card to flip it.</p>
+  </div>
+  <div class="species-grid" id="speciesGrid"></div>
+</section>
+
+<!-- ================= RESEARCH JUSTIFICATION BOOK ================= -->
+<section class="research-section" id="research">
+  <div class="research-head">
+    <span class="eyebrow">Research Foundation</span>
+    <h1>Why Arboreal Primates?</h1>
+    <p>Arboreal primates are among the most spatially demanding animals in zoological parks. Their welfare depends not only on habitat size, but on vertical complexity, canopy connectivity and opportunities for natural movement.</p>
+  </div>
+  <div class="research-book" aria-label="Interactive Research Justification book">
+    <article class="book-page">
+      <span class="book-num">FIELD NOTES / 01</span>
+      <h2>Research Justification</h2>
+      <p>Unlike terrestrial animals, arboreal primates use the rainforest in three dimensions. They make an ideal group for investigating how landscape architecture can recreate ecological systems—not simply design enclosures.</p>
+      <div class="forest-cut" aria-label="Illustration of rainforest layers with primates">
+        <span class="layer-label l1">Emergent layer</span><span class="layer-label l2">Upper canopy</span><span class="layer-label l3">Mid canopy</span><span class="layer-label l4">Understory</span>
+        <i class="tree t1"></i><i class="tree t2"></i><i class="tree t3"></i><span class="primate one">🦧</span><span class="primate two">🐒</span>
+      </div>
+      <p class="book-instruction">Turn the research tabs to read each reason →</p>
+    </article>
+    <article class="book-page book-copy">
+      <div class="page-tabs" id="researchTabs">
+        <button class="page-tab active" data-reason="ecosystem">1 Ecosystem</button><button class="page-tab" data-reason="fragmentation">2 Fragmentation</button><button class="page-tab" data-reason="landscape">3 Landscape</button><button class="page-tab" data-reason="biocentric">4 Bio-centric</button><button class="page-tab" data-reason="education">5 Education</button><button class="page-tab" data-reason="flagship">6 Flagship</button>
+      </div>
+      <div class="book-detail" id="bookDetail"></div>
+      <div class="did-you-know"><h3>Did You Know?</h3><p>Orangutans share approximately 97% of their DNA with humans. Gibbons can brachiate at up to 55 km/h. Tropical rainforests hold over half of terrestrial biodiversity while covering only about 6% of land.</p></div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCES + ECO REWARDS ================= -->
+<section class="experience-section" id="experiences">
+  <div class="experience-head"><span class="eyebrow">Learn Through Respectful Encounters</span><h2>Experience the Forest</h2><p>Choose an activity, make a booking, and collect eco-reward points once it is completed.</p></div>
+  <div class="reward-bar"><div><h3>🌿 Eco Reward Collection</h3><span style="font-size:12px;color:var(--mist-dim)">Your completed experiences help grow your forest knowledge.</span></div><div class="reward-points"><span id="ecoPoints">0</span> PTS <small>collected</small></div></div>
+  <div class="experience-grid">
+    <article class="experience-card"><span>🌉</span><h3>Canopy Immersive Walk</h3><p>Walk at canopy height while observing primates naturally.</p><button class="book-btn" data-points="10" data-activity="Canopy Immersive Walk">Book · 10 pts</button></article>
+    <article class="experience-card"><span>👀</span><h3>One-Way Viewing Cave</h3><p>Animals choose whether to approach visitors.</p><button class="book-btn" data-points="8" data-activity="One-Way Viewing Cave">Book · 8 pts</button></article>
+    <article class="experience-card"><span>🌿</span><h3>Forest Sensory Pavilion</h3><p>Touch native plants, listen to rainforest sounds, and smell aromatic leaves.</p><button class="book-btn" data-points="8" data-activity="Forest Sensory Pavilion">Book · 8 pts</button></article>
+    <article class="experience-card"><span>🎓</span><h3>Keeper Talk</h3><p>Daily enrichment demonstration with the care team.</p><button class="book-btn" data-points="12" data-activity="Keeper Talk">Book · 12 pts</button></article>
+    <article class="experience-card"><span>🥭</span><h3>Rotational Feeding Experience</h3><p>Observe how enrichment encourages natural foraging.</p><button class="book-btn" data-points="15" data-activity="Rotational Feeding Experience">Book · 15 pts</button></article>
+    <article class="experience-card featured"><span>🦧</span><h3>Orangutan Enrichment Session</h3><div class="meta"><b>Location</b><span>Canopy Habitat</span><b>Time</b><span>10:30 AM daily · 25 minutes</span><b>Active period</b><span>Morning foraging</span><b>Participation</b><span>Rotate enrichment feeder; no direct feeding</span></div><p>Keeper shares natural behaviour, intelligence, conservation, and habitat design.</p><p class="choice-note">Animal choice: animals may participate—or they may not. Respecting their choice is responsible wildlife care.</p><button class="book-btn" data-points="25" data-activity="Orangutan Enrichment Session">Book · 25 pts</button></article>
+    <article class="experience-card featured"><span>🦍</span><h3>Chimpanzee Intelligence Demonstration</h3><div class="meta"><b>Duration</b><span>25 minutes</span><b>Instead of tricks</b><span>Sticks, boxes, rope puzzles, termite mound</span></div><p>Keepers set natural problem-solving challenges. Visitors vote for a puzzle; the chimpanzee chooses whether to interact.</p><p class="choice-note">Learning focus: memory · problem solving · tool use.</p><button class="book-btn" data-points="22" data-activity="Chimpanzee Intelligence Demonstration">Book · 22 pts</button></article>
+    <article class="experience-card featured"><span>🐒</span><h3>White-handed Gibbon Keeper Talk</h3><div class="meta"><b>Duration</b><span>20 minutes</span><b>Best time</b><span>9:00–10:00 AM, when gibbons are most vocal</span></div><p>Observe morning territorial calling, brachiation, family interaction, grooming and natural communication.</p><p class="choice-note">Bring binoculars and record behaviours. No feeding. The keeper explains singing, canopy layers, brachiation and threats in the wild.</p><button class="book-btn" data-points="20" data-activity="White-handed Gibbon Keeper Talk">Book · 20 pts</button></article>
+  </div>
+</section>
+
+<footer>Stratified Interbreath — Canopy Breath Zone · concept build, ready for real habitat data</footer>
+
+<script>
+/* ============================================================
+   HABITAT PATCH DATA
+   ============================================================ */
+const habitats = [
+  {id:'gateway', name:'Living Canopy Gateway', texture:'Dense rainforest entrance', color:'#1B4332', style:'Large overlapping tree crowns', cx:150, cy:430, r:112, crownStyle:'large'},
+  {id:'gibbon', name:'White-handed Gibbon', texture:'Tall emergent forest', color:'#4CAF50', style:'Tall canopy clusters', cx:335, cy:250, r:96, crownStyle:'tall'},
+  {id:'siamang', name:'Siamang', texture:'High canopy forest', color:'#123527', style:'Vertical tree clusters', cx:545, cy:150, r:90, crownStyle:'vertical'},
+  {id:'spider', name:'Spider Monkey', texture:'Connected canopy', color:'#2F6B4F', style:'Long canopy bridges between crowns', cx:545, cy:360, r:104, crownStyle:'bridge'},
+  {id:'orangutan', name:'Orangutan Mini Sanctuary', texture:'Mature rainforest', color:'#1F4A34', style:'Massive canopy crowns', cx:345, cy:470, r:120, crownStyle:'massive'},
+  {id:'capuchin', name:'Brown Capuchin', texture:'Fruit forest', color:'#6B9B5C', style:'Rounded fruit tree symbols', cx:735, cy:240, r:92, crownStyle:'fruit'},
+  {id:'dusky', name:'Dusky Leaf Monkey', texture:'Leafy forest', color:'#7C8B3D', style:'Dense foliage texture', cx:735, cy:440, r:96, crownStyle:'dense'},
+  {id:'tamarin', name:'Golden Lion Tamarin', texture:'Secondary forest', color:'#A8B23F', style:'Fine textured shrubs and vines', cx:905, cy:165, r:82, crownStyle:'fine'},
+  {id:'chimp', name:'Chimpanzee', texture:'Woodland transition', color:'#7A8450', style:'Forest clearings with climbing logs', cx:915, cy:355, r:104, crownStyle:'clearing'},
+  {id:'mandrill', name:'Mandrill', texture:'Forest floor', color:'#8C9A4A', style:'Open understory with rocks', cx:900, cy:545, r:92, crownStyle:'floor'},
+  {id:'sunbear', name:'Sun Bear', texture:'Mixed forest', color:'#7A9B5C', style:'Fallen logs and dense undergrowth', cx:685, cy:585, r:92, crownStyle:'logs'},
+  {id:'terrapin', name:'Terrapin Habitat', texture:'Wetland', color:'#4A8B85', style:'Water and aquatic vegetation', cx:475, cy:620, r:86, crownStyle:'water'},
+  {id:'elephant', name:'Elephant Sanctuary', texture:'Open woodland', color:'#A9C98A', style:'Scattered large trees', cx:1055, cy:490, r:112, crownStyle:'scattered'},
+  {id:'flight', name:'Free Flight Theatre', texture:'Forest clearing', color:'#8FD19E', style:'Feather-like canopy graphics', cx:1050, cy:255, r:86, crownStyle:'feather'},
+];
+
+const corridors = [
+  ['gateway','gibbon'], ['gibbon','siamang'], ['siamang','spider'], ['spider','orangutan'],
+  ['orangutan','gateway'], ['spider','capuchin'], ['capuchin','tamarin'], ['capuchin','dusky'],
+  ['dusky','chimp'], ['chimp','mandrill'], ['mandrill','sunbear'], ['sunbear','terrapin'],
+  ['terrapin','orangutan'], ['chimp','flight'], ['flight','tamarin'], ['chimp','elephant'],
+  ['elephant','mandrill'],
+];
+
+/* boardwalk: a single winding visitor path, independent of the ecological corridors */
+const boardwalkPath = "M60,560 C220,640 340,600 460,560 C600,510 660,600 780,580 C900,560 980,610 1090,560 C1120,545 1130,520 1130,480";
+
+/* ============================================================
+   BLOB GENERATOR (deterministic per-name organic shapes)
+   ============================================================ */
+function hashSeed(str){
+  let h = 0;
+  for(let i=0;i<str.length;i++){ h = (Math.imul(31,h) + str.charCodeAt(i)) | 0; }
+  return h >>> 0;
+}
+function mulberry32(seed){
+  return function(){
+    seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function blobPath(cx, cy, r, seedStr, points=11, jitter=0.24){
+  const rand = mulberry32(hashSeed(seedStr));
+  const pts = [];
+  for(let i=0;i<points;i++){
+    const angle = (i/points) * Math.PI*2;
+    const rad = r * (1 + jitter*(rand()-0.5)*2);
+    pts.push([cx + rad*Math.cos(angle), cy + rad*Math.sin(angle)*0.88]);
+  }
+  const mid = (a,b)=>[(a[0]+b[0])/2, (a[1]+b[1])/2];
+  let d = `M ${mid(pts[points-1],pts[0])[0]} ${mid(pts[points-1],pts[0])[1]} `;
+  for(let i=0;i<points;i++){
+    const next = pts[(i+1)%points];
+    const m = mid(pts[i], next);
+    d += `Q ${pts[i][0]} ${pts[i][1]} ${m[0]} ${m[1]} `;
+  }
+  return d + 'Z';
+}
+
+/* crown cluster generator per style, scattered inside a patch */
+function crownCluster(h){
+  const rand = mulberry32(hashSeed(h.id + 'crown'));
+  const n = {large:5, tall:7, vertical:8, bridge:6, massive:6, fruit:9, dense:12,
+             fine:14, clearing:5, floor:4, logs:5, water:4, scattered:5, feather:8}[h.crownStyle] || 6;
+  let out = '';
+  for(let i=0;i<n;i++){
+    const ang = rand()*Math.PI*2;
+    const dist = rand()*h.r*0.55;
+    const px = h.cx + Math.cos(ang)*dist;
+    const py = h.cy + Math.sin(ang)*dist*0.85;
+    let size = h.r*0.14 + rand()*h.r*0.1;
+    if(h.crownStyle==='tall' || h.crownStyle==='vertical'){
+      out += `<ellipse cx="${px}" cy="${py}" rx="${size*0.55}" ry="${size*1.6}" fill="${h.color}" fill-opacity="0.5"/>`;
+    } else if(h.crownStyle==='fine' || h.crownStyle==='dense'){
+      out += `<circle cx="${px}" cy="${py}" r="${size*0.55}" fill="${h.color}" fill-opacity="0.45"/>`;
+    } else if(h.crownStyle==='water'){
+      out += `<ellipse cx="${px}" cy="${py}" rx="${size*1.3}" ry="${size*0.5}" fill="#BFE3DE" fill-opacity="0.4"/>`;
+    } else if(h.crownStyle==='feather'){
+      out += `<path d="M${px},${py} q${size},-${size*1.4} 0,-${size*2.6} q-${size},${size*1.2} 0,${size*2.6}" fill="${h.color}" fill-opacity="0.45"/>`;
+    } else {
+      out += `<circle cx="${px}" cy="${py}" r="${size}" fill="${h.color}" fill-opacity="0.5"/>`;
+    }
+  }
+  return out;
+}
+
+/* ============================================================
+   RENDER MAP
+   ============================================================ */
+const svg = document.getElementById('patchSvg');
+const byId = Object.fromEntries(habitats.map(h=>[h.id,h]));
+let svgHTML = '';
+
+// soft blur filter for organic blending edges
+svgHTML += `<defs><filter id="softEdge" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"/></filter></defs>`;
+
+// patches (blend layer first, then crisp layer on top for click targets)
+habitats.forEach(h=>{
+  const d = blobPath(h.cx, h.cy, h.r, h.id);
+  svgHTML += `<path d="${d}" fill="${h.color}" fill-opacity="0.5" filter="url(#softEdge)"/>`;
+});
+habitats.forEach(h=>{
+  const d = blobPath(h.cx, h.cy, h.r*0.94, h.id+'-core');
+  svgHTML += `<g class="patch-shape" id="patch-${h.id}" data-id="${h.id}">
+    <path d="${d}" fill="${h.color}" fill-opacity="0.22" stroke="${h.color}" stroke-width="1.4" stroke-opacity="0.8"/>
+    ${crownCluster(h)}
+  </g>`;
+});
+
+// corridors (drawn after patches, before boardwalk)
+corridors.forEach(([a,b])=>{
+  const ha = byId[a], hb = byId[b];
+  const mx=(ha.cx+hb.cx)/2, my=(ha.cy+hb.cy)/2;
+  const dx=hb.cx-ha.cx, dy=hb.cy-ha.cy;
+  const len=Math.sqrt(dx*dx+dy*dy)||1;
+  const bend=18;
+  const cxp = mx + (-dy/len)*bend, cyp = my + (dx/len)*bend;
+  svgHTML += `<path class="corridor-line" d="M${ha.cx},${ha.cy} Q${cxp},${cyp} ${hb.cx},${hb.cy}"/>`;
+});
+
+// boardwalk
+svgHTML += `<path class="boardwalk-line" d="${boardwalkPath}"/>`;
+
+// a handful of movement arrows along key corridors
+function arrowAt(x,y,angleDeg){
+  return `<g transform="translate(${x},${y}) rotate(${angleDeg})"><path class="move-arrow" d="M-7,-5 L7,0 L-7,5 Z"/></g>`;
+}
+svgHTML += arrowAt(240,335,35);
+svgHTML += arrowAt(440,255,-20);
+svgHTML += arrowAt(730,400,60);
+svgHTML += arrowAt(900,450,80);
+svgHTML += arrowAt(980,320,-40);
+
+// labels
+habitats.forEach(h=>{
+  svgHTML += `<text class="patch-label" x="${h.cx}" y="${h.cy + h.r*0.15}">${h.name.toUpperCase()}</text>`;
+});
+
+svg.innerHTML = svgHTML;
+
+/* ============================================================
+   LEGEND + DETAIL PANEL
+   ============================================================ */
+const legendScroll = document.getElementById('legendScroll');
+habitats.forEach(h=>{
+  const row = document.createElement('div');
+  row.className = 'legend-row';
+  row.id = 'legend-' + h.id;
+  row.innerHTML = `<span class="legend-dot" style="background:${h.color}"></span>${h.name}`;
+  row.addEventListener('click', ()=>selectPatch(h.id));
+  legendScroll.appendChild(row);
+});
+
+function selectPatch(id){
+  document.querySelectorAll('.patch-shape').forEach(el=>el.classList.remove('selected'));
+  document.querySelectorAll('.legend-row').forEach(el=>el.classList.remove('active'));
+  document.getElementById('patch-' + id).classList.add('selected');
+  document.getElementById('legend-' + id).classList.add('active');
+
+  const h = byId[id];
+  const links = corridors.filter(c=>c[0]===id || c[1]===id)
+    .map(c=> byId[c[0]===id ? c[1] : c[0]].name);
+
+  document.getElementById('patchDetail').innerHTML = `
+    <div class="detail-title">${h.name}</div>
+    <div class="detail-row"><span class="k">Texture</span><span class="v">${h.texture}</span></div>
+    <div class="detail-row"><span class="k">Dominant Colour</span><span class="v">${h.color}</span></div>
+    <div class="detail-row"><span class="k">Graphic Style</span><span class="v">${h.style}</span></div>
+    <div class="detail-row"><span class="k">Connected To</span><span class="v">${links.join(', ')}</span></div>
+  `;
+}
+
+document.querySelectorAll('.patch-shape').forEach(el=>{
+  el.addEventListener('click', ()=>selectPatch(el.dataset.id));
+});
+
+/* ============================================================
+   SPECIES SPOTLIGHT
+   ============================================================ */
+const species = [
+  {icon:'🦧', anim:'anim-bob', name:'Orangutan', chars:['Largest arboreal mammal','Highly intelligent','Solitary lifestyle','Excellent climber'], fact:'Builds a new nest almost every evening using branches and leaves.', observe:['Nest building','Tool use','Slow climbing','Fruit foraging']},
+  {icon:'🐒', anim:'anim-swing', name:'White-handed Gibbon', chars:['Fast brachiator','Monogamous family groups','Long arms','Loud territorial songs'], fact:'Can swing through the canopy at speeds of up to 55 km/h.', observe:['Brachiation','Morning calls','Pair bonding']},
+  {icon:'🐵', anim:'anim-bob', name:'Brown Capuchin Monkey', chars:['Highly social','Curious','Skilled problem solver','Uses tools'], fact:'Often uses sticks or stones to help obtain food.', observe:['Group foraging','Tool use','Social grooming']},
+  {icon:'🐒', anim:'anim-swing', name:'Spider Monkey', chars:['Prehensile tail','Agile climber','Long limbs','Highly active'], fact:'Its tail acts like a fifth limb for hanging and climbing.', observe:['Tail-assisted movement','Canopy leaps','Fruit feeding']},
+  {icon:'🌿', anim:'anim-sway', name:'Dusky Leaf Monkey', chars:['Leaf specialist','Gentle behaviour','Family groups','Distinctive white eye rings'], fact:'Babies are born with bright orange fur before gradually turning grey.', observe:['Leaf feeding','Resting','Infant care']},
+  {icon:'🎵', anim:'anim-swing', name:'Siamang', chars:['Largest gibbon','Inflatable throat sac','Strong pair bonds'], fact:'Their calls can be heard over 3 km through the rainforest.', observe:['Singing','Swinging','Family interaction']},
+  {icon:'🐻', anim:'anim-bob', name:'Sun Bear', chars:['Smallest bear species','Excellent climber','Long tongue'], fact:"Its tongue can reach up to 25 cm to extract honey and insects.", observe:['Climbing','Digging logs','Foraging']},
+  {icon:'🦍', anim:'anim-bob', name:'Chimpanzee', chars:['Highly intelligent','Complex social groups','Tool user'], fact:'Wild chimpanzees have been observed making and using simple tools to gather food.', observe:['Tool use','Grooming','Problem solving']},
+  {icon:'🐵', anim:'anim-sway', name:'Mandrill', chars:['Largest monkey species','Colourful face','Ground dwelling'], fact:"The brighter the male's colours, the healthier and more dominant he is.", observe:['Social interaction','Ground foraging','Dominance displays']},
+  {icon:'🦁', anim:'anim-sway', name:'Golden Lion Tamarin', chars:['Small arboreal primate','Bright golden coat','Family groups'], fact:'Less than 3% of its original Atlantic Forest habitat remains in the wild.', observe:['Family movement','Insect hunting','Tree hollow exploration']},
+];
+
+const speciesGrid = document.getElementById('speciesGrid');
+species.forEach((s,i)=>{
+  const card = document.createElement('div');
+  card.className = 'flip-card';
+  card.innerHTML = `
+    <div class="flip-inner">
+      <div class="flip-face flip-front">
+        <span class="flip-icon ${s.anim}">${s.icon}</span>
+        <h3>${s.name}</h3>
+        <span class="tap-hint">tap to explore →</span>
+      </div>
+      <div class="flip-face flip-back">
+        <h3>${s.icon} ${s.name}</h3>
+        <div>
+          <div class="field-label">Characteristics</div>
+          <ul>${s.chars.map(c=>`<li>• ${c}</li>`).join('')}</ul>
+        </div>
+        <div>
+          <div class="field-label">Fun Fact</div>
+          <div class="fun-fact">${s.fact}</div>
+        </div>
+        <div>
+          <div class="field-label">Observe</div>
+          <div class="observe-row">${s.observe.map(o=>`<span class="observe-chip">✔ ${o}</span>`).join('')}</div>
+        </div>
+      </div>
+    </div>
+  `;
+  card.addEventListener('click', ()=> card.classList.toggle('flipped'));
+  speciesGrid.appendChild(card);
+});
+
+/* ============================================================
+   RESEARCH BOOK + ECO REWARD ACTIVITY
+   ============================================================ */
+const researchReasons = {
+  ecosystem:{title:'They Represent the Tropical Rainforest Ecosystem',rating:'★★★★★',text:'Arboreal primates occupy the emergent layer, upper canopy, mid canopy and understory. Designing for them means designing an entire rainforest ecosystem.',items:['Canopy structure and vegetation layers','Ecological corridors and food sources','Water systems and microclimates','One interconnected living system']},
+  fragmentation:{title:'They Are Highly Sensitive to Habitat Fragmentation',rating:'★★★★★',text:'Many arboreal primates rarely travel on the ground. Broken canopy connections restrict movement, reduce natural behaviour and can increase stress.',items:['Canopy bridges','Habitat corridors','Continuous tree cover','Vertical movement networks']},
+  landscape:{title:'They Depend on Landscape Architecture',rating:'★★★★★',text:'More than an enclosure, their habitat requires trees, forest layering, topography, vegetation diversity, canopy connectivity and ecological succession.',items:['Living trees and varied planting','Terrain with ecological purpose','Connected, evolving forest structure','A strong landscape architecture focus']},
+  biocentric:{title:'They Demonstrate a Bio-centric Design Approach',rating:'★★★★☆',text:'A bio-centric habitat places living organisms before human convenience. Visitor experiences are integrated respectfully around the animals’ needs.',items:['Freedom of movement and behavioural choice','Refuge, privacy and social interaction','Natural foraging opportunities','Environmental complexity']},
+  education:{title:'They Encourage Conservation Education',rating:'★★★★☆',text:'Primates are relatable: visitors can observe parenting, communication, play, cooperation and problem-solving—behaviours that create empathy.',items:['Observe without intrusion','Understand rainforest interdependence','Build conservation awareness']},
+  flagship:{title:'They Are Flagship Species',rating:'★★★★★',text:'Orangutans, siamangs and gibbons are charismatic ambassadors for rainforest conservation. Protecting habitat-dependent species supports the whole ecosystem.',items:['Rainforest trees and birds','Reptiles, insects and pollinators','Freshwater systems','The umbrella species effect']}
+};
+const bookDetail = document.getElementById('bookDetail');
+function renderReason(key){
+  const r = researchReasons[key];
+  bookDetail.innerHTML = `<div class="rating">${r.rating}</div><h3>${r.title}</h3><p>${r.text}</p><ul>${r.items.map(item=>`<li>${item}</li>`).join('')}</ul>`;
+  document.querySelectorAll('.page-tab').forEach(tab=>tab.classList.toggle('active',tab.dataset.reason===key));
+}
+document.querySelectorAll('.page-tab').forEach(tab=>tab.addEventListener('click',()=>renderReason(tab.dataset.reason)));
+renderReason('ecosystem');
+
+let ecoPoints = 0;
+document.querySelectorAll('.book-btn').forEach(button=>{
+  button.addEventListener('click',()=>{
+    if(button.disabled) return;
+    ecoPoints += Number(button.dataset.points);
+    document.getElementById('ecoPoints').textContent = ecoPoints;
+    button.textContent = `Completed · +${button.dataset.points} pts`;
+    button.disabled = true;
+    button.setAttribute('aria-label', `${button.dataset.activity} completed; ${button.dataset.points} points collected`);
+  });
+});
+</script>
+</body>
+</html>
