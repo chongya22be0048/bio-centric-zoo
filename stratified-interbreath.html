@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stratified Interbreath — Canopy Breath Zone</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --canopy-deep:#16281F;
@@ -26,16 +26,14 @@ html{scroll-behavior:smooth;}
 body{
   background:var(--mist);
   color:var(--canopy-deep);
-  font-family:'Greycliff CF','IBM Plex Sans',sans-serif;
+  font-family:'IBM Plex Sans', sans-serif;
   line-height:1.6;
 }
-h1{font-family:'Cooper BT','Cooper Black',Georgia,serif; font-weight:600; color:var(--canopy-deep); line-height:1.05;}
-h2{font-family:'Bebas Neue','Arial Narrow',sans-serif; font-weight:400; letter-spacing:.045em; color:var(--canopy-deep); line-height:1.05;}
-h3,.display{font-family:'Times New Roman',Times,serif; font-weight:700; color:var(--canopy-deep); line-height:1.15;}
+h1,h2,h3,.display{font-family:'Fraunces', serif; font-weight:600; color:var(--canopy-deep); line-height:1.15;}
 .mono{font-family:'IBM Plex Mono', monospace; letter-spacing:0.03em;}
 .hand{font-family:'Caveat', cursive; font-weight:600;}
 .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
-.eyebrow{font-family:'Gulfs Display','Bebas Neue','Arial Narrow',sans-serif; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--moss);}
+.eyebrow{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--moss);}
 
 /* ================= HERO (dark canopy) ================= */
 .hero{
@@ -210,30 +208,6 @@ h3,.display{font-family:'Times New Roman',Times,serif; font-weight:700; color:va
 .observe-chip{display:inline-flex; align-items:center; gap:5px; background:rgba(224,164,88,0.14); color:var(--dawn); padding:3px 9px; border-radius:14px; font-size:10.5px; margin:2px 4px 0 0;}
 .observe-row{display:flex; flex-wrap:wrap;}
 
-/* ================= RESEARCH BOOK ================= */
-.research-section{background:linear-gradient(180deg,#e5eadb 0%,var(--mist) 100%); padding:88px 0; overflow:hidden;}
-.research-head{text-align:center; max-width:760px; margin:0 auto 38px; padding:0 28px;}
-.research-head h1{font-size:clamp(38px,6vw,62px); margin:8px 0 14px;}
-.research-head p{font-family:'Times New Roman',serif; font-size:18px; line-height:1.55;}
-.research-book{max-width:1080px; min-height:535px; margin:0 auto 30px; display:grid; grid-template-columns:1fr 1fr; border-radius:8px; overflow:hidden; box-shadow:0 20px 40px rgba(22,40,31,.22); background:#f7f0dd; position:relative;}
-.research-book:after{content:''; position:absolute; top:0; bottom:0; left:50%; width:18px; transform:translateX(-50%); background:linear-gradient(90deg,rgba(64,40,24,.19),rgba(255,255,255,.55),rgba(64,40,24,.15)); pointer-events:none;}
-.book-page{padding:42px clamp(25px,4vw,52px); background:radial-gradient(circle at 10% 10%,rgba(224,164,88,.12),transparent 26%),#fbf6e9; position:relative;}
-.book-page:first-child{border-radius:8px 0 0 8px;}.book-page:last-child{border-radius:0 8px 8px 0;}
-.book-page h2{font-size:36px; margin:7px 0 14px;}.book-page p{font-size:14px; margin-bottom:16px;}.book-num{font-family:'Bebas Neue',sans-serif; color:var(--bark); letter-spacing:.12em; font-size:15px;}
-.forest-cut{height:225px; margin:18px 0; position:relative; border-bottom:5px solid var(--understory); background:linear-gradient(to top,#35533d 0 22%,#557147 22% 48%,#789554 48% 72%,#b5c987 72% 100%); overflow:hidden; border-radius:5px;}
-.forest-cut:before{content:''; position:absolute; inset:0; opacity:.55; background:repeating-linear-gradient(105deg,transparent 0 18px,rgba(22,40,31,.14) 19px 22px,transparent 23px 48px);}
-.tree{position:absolute; bottom:0; width:7px; background:var(--bark); border-radius:8px 8px 0 0;}.tree:after{content:''; position:absolute; width:62px; height:62px; border-radius:50%; background:var(--understory); left:50%; transform:translateX(-50%); top:-33px; box-shadow:-22px 15px 0 -4px #476843,20px 12px 0 -5px #6b8e55;}.tree.t1{height:160px;left:18%;}.tree.t2{height:205px;left:53%;}.tree.t3{height:120px;left:79%;}.tree.t2:after{width:83px;height:83px;top:-45px;}.primate{position:absolute;font-size:33px;z-index:2;filter:drop-shadow(0 2px 1px rgba(0,0,0,.2));}.primate.one{top:25px;left:53%;}.primate.two{top:90px;left:19%;}
-.layer-label{position:absolute; right:8px; font-family:'Bebas Neue',sans-serif; font-size:11px; letter-spacing:.08em; color:rgba(22,40,31,.75);}.l1{top:11px}.l2{top:64px}.l3{top:119px}.l4{bottom:8px}
-.page-tabs{display:flex; flex-wrap:wrap; gap:7px; margin:14px 0 18px;}.page-tab{border:1px solid rgba(22,40,31,.2); color:var(--understory); background:transparent; padding:6px 8px; border-radius:14px; font-size:10px; cursor:pointer; font-family:'Greycliff CF','IBM Plex Sans',sans-serif;}.page-tab.active,.page-tab:hover{background:var(--understory); color:var(--mist);}
-.book-copy h3{font-size:22px; margin-bottom:8px;}.book-copy ul{padding-left:18px; font-size:13px; line-height:1.65;}.book-copy li::marker{color:var(--dawn);}.book-detail{min-height:160px;}.rating{color:var(--dawn); letter-spacing:2px; font-size:13px;}.did-you-know{background:var(--understory); color:var(--mist); padding:18px; border-radius:5px; margin-top:18px;}.did-you-know h3{color:var(--dawn); font-size:20px;}.did-you-know p{font-size:12px; color:var(--mist-dim); margin:7px 0 0;}
-.book-instruction{text-align:center;font-family:'Caveat',cursive;font-size:18px;color:var(--bark);}
-
-/* ================= EXPERIENCES + REWARDS ================= */
-.experience-section{padding:88px 0; background:var(--canopy-deep); color:var(--mist);}.experience-head{text-align:center; margin-bottom:36px; padding:0 28px;}.experience-head .eyebrow{color:var(--dawn);}.experience-head h2{color:var(--mist);font-size:clamp(36px,5vw,52px);margin-top:7px;}.experience-head p{color:var(--mist-dim);font-family:'Times New Roman',serif;font-size:17px;}
-.reward-bar{max-width:1124px;margin:0 auto 28px;padding:16px 20px;border:1px solid rgba(241,238,227,.2);border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(241,238,227,.07);}.reward-bar h3{color:var(--mist);font-size:18px;}.reward-points{font-family:'Bebas Neue',sans-serif;color:var(--dawn);font-size:32px;letter-spacing:.06em;white-space:nowrap;}.reward-points small{font-family:'Greycliff CF','IBM Plex Sans',sans-serif;font-size:11px;color:var(--mist-dim);letter-spacing:0;}
-.experience-grid{max-width:1124px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}.experience-card{border:1px solid rgba(241,238,227,.17);border-radius:10px;padding:23px;background:rgba(241,238,227,.05);display:flex;flex-direction:column;align-items:flex-start;}.experience-card.featured{grid-column:span 2;background:linear-gradient(130deg,rgba(143,173,107,.24),rgba(224,164,88,.1));}.experience-card h3{color:var(--mist);font-size:20px;margin:7px 0;}.experience-card p,.experience-card li{font-size:12.5px;color:var(--mist-dim);}.experience-card ul{padding-left:16px;margin:7px 0 14px;}.meta{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:11.5px;margin:8px 0 15px;color:var(--mist-dim);}.meta b{color:var(--canopy-light);font-weight:600;}.book-btn{border:0;border-radius:20px;background:var(--dawn);color:var(--canopy-deep);padding:9px 14px;font-weight:700;font-size:12px;cursor:pointer;margin-top:auto;}.book-btn:disabled{background:var(--moss);cursor:default;}.choice-note{border-left:2px solid var(--dawn);padding-left:10px;margin-top:10px;font-family:'Times New Roman',serif;font-size:13px;color:var(--mist);}
-@media(max-width:700px){.research-book{grid-template-columns:1fr;}.research-book:after{display:none}.book-page:first-child,.book-page:last-child{border-radius:0}.experience-card.featured{grid-column:span 1}.reward-bar{margin-left:28px;margin-right:28px}.experience-grid{padding:0 28px;}}
-
 footer{text-align:center; padding:34px 20px 46px; font-size:12px; color:var(--bark); border-top:1px solid var(--line-dark);}
 
 ::-webkit-scrollbar{width:6px;}
@@ -327,50 +301,6 @@ footer{text-align:center; padding:34px 20px 46px; font-size:12px; color:var(--ba
     <p style="color:var(--bark); font-size:13.5px; margin-top:8px;">Tap a card to flip it.</p>
   </div>
   <div class="species-grid" id="speciesGrid"></div>
-</section>
-
-<!-- ================= RESEARCH JUSTIFICATION BOOK ================= -->
-<section class="research-section" id="research">
-  <div class="research-head">
-    <span class="eyebrow">Research Foundation</span>
-    <h1>Why Arboreal Primates?</h1>
-    <p>Arboreal primates are among the most spatially demanding animals in zoological parks. Their welfare depends not only on habitat size, but on vertical complexity, canopy connectivity and opportunities for natural movement.</p>
-  </div>
-  <div class="research-book" aria-label="Interactive Research Justification book">
-    <article class="book-page">
-      <span class="book-num">FIELD NOTES / 01</span>
-      <h2>Research Justification</h2>
-      <p>Unlike terrestrial animals, arboreal primates use the rainforest in three dimensions. They make an ideal group for investigating how landscape architecture can recreate ecological systems—not simply design enclosures.</p>
-      <div class="forest-cut" aria-label="Illustration of rainforest layers with primates">
-        <span class="layer-label l1">Emergent layer</span><span class="layer-label l2">Upper canopy</span><span class="layer-label l3">Mid canopy</span><span class="layer-label l4">Understory</span>
-        <i class="tree t1"></i><i class="tree t2"></i><i class="tree t3"></i><span class="primate one">🦧</span><span class="primate two">🐒</span>
-      </div>
-      <p class="book-instruction">Turn the research tabs to read each reason →</p>
-    </article>
-    <article class="book-page book-copy">
-      <div class="page-tabs" id="researchTabs">
-        <button class="page-tab active" data-reason="ecosystem">1 Ecosystem</button><button class="page-tab" data-reason="fragmentation">2 Fragmentation</button><button class="page-tab" data-reason="landscape">3 Landscape</button><button class="page-tab" data-reason="biocentric">4 Bio-centric</button><button class="page-tab" data-reason="education">5 Education</button><button class="page-tab" data-reason="flagship">6 Flagship</button>
-      </div>
-      <div class="book-detail" id="bookDetail"></div>
-      <div class="did-you-know"><h3>Did You Know?</h3><p>Orangutans share approximately 97% of their DNA with humans. Gibbons can brachiate at up to 55 km/h. Tropical rainforests hold over half of terrestrial biodiversity while covering only about 6% of land.</p></div>
-    </article>
-  </div>
-</section>
-
-<!-- ================= EXPERIENCES + ECO REWARDS ================= -->
-<section class="experience-section" id="experiences">
-  <div class="experience-head"><span class="eyebrow">Learn Through Respectful Encounters</span><h2>Experience the Forest</h2><p>Choose an activity, make a booking, and collect eco-reward points once it is completed.</p></div>
-  <div class="reward-bar"><div><h3>🌿 Eco Reward Collection</h3><span style="font-size:12px;color:var(--mist-dim)">Your completed experiences help grow your forest knowledge.</span></div><div class="reward-points"><span id="ecoPoints">0</span> PTS <small>collected</small></div></div>
-  <div class="experience-grid">
-    <article class="experience-card"><span>🌉</span><h3>Canopy Immersive Walk</h3><p>Walk at canopy height while observing primates naturally.</p><button class="book-btn" data-points="10" data-activity="Canopy Immersive Walk">Book · 10 pts</button></article>
-    <article class="experience-card"><span>👀</span><h3>One-Way Viewing Cave</h3><p>Animals choose whether to approach visitors.</p><button class="book-btn" data-points="8" data-activity="One-Way Viewing Cave">Book · 8 pts</button></article>
-    <article class="experience-card"><span>🌿</span><h3>Forest Sensory Pavilion</h3><p>Touch native plants, listen to rainforest sounds, and smell aromatic leaves.</p><button class="book-btn" data-points="8" data-activity="Forest Sensory Pavilion">Book · 8 pts</button></article>
-    <article class="experience-card"><span>🎓</span><h3>Keeper Talk</h3><p>Daily enrichment demonstration with the care team.</p><button class="book-btn" data-points="12" data-activity="Keeper Talk">Book · 12 pts</button></article>
-    <article class="experience-card"><span>🥭</span><h3>Rotational Feeding Experience</h3><p>Observe how enrichment encourages natural foraging.</p><button class="book-btn" data-points="15" data-activity="Rotational Feeding Experience">Book · 15 pts</button></article>
-    <article class="experience-card featured"><span>🦧</span><h3>Orangutan Enrichment Session</h3><div class="meta"><b>Location</b><span>Canopy Habitat</span><b>Time</b><span>10:30 AM daily · 25 minutes</span><b>Active period</b><span>Morning foraging</span><b>Participation</b><span>Rotate enrichment feeder; no direct feeding</span></div><p>Keeper shares natural behaviour, intelligence, conservation, and habitat design.</p><p class="choice-note">Animal choice: animals may participate—or they may not. Respecting their choice is responsible wildlife care.</p><button class="book-btn" data-points="25" data-activity="Orangutan Enrichment Session">Book · 25 pts</button></article>
-    <article class="experience-card featured"><span>🦍</span><h3>Chimpanzee Intelligence Demonstration</h3><div class="meta"><b>Duration</b><span>25 minutes</span><b>Instead of tricks</b><span>Sticks, boxes, rope puzzles, termite mound</span></div><p>Keepers set natural problem-solving challenges. Visitors vote for a puzzle; the chimpanzee chooses whether to interact.</p><p class="choice-note">Learning focus: memory · problem solving · tool use.</p><button class="book-btn" data-points="22" data-activity="Chimpanzee Intelligence Demonstration">Book · 22 pts</button></article>
-    <article class="experience-card featured"><span>🐒</span><h3>White-handed Gibbon Keeper Talk</h3><div class="meta"><b>Duration</b><span>20 minutes</span><b>Best time</b><span>9:00–10:00 AM, when gibbons are most vocal</span></div><p>Observe morning territorial calling, brachiation, family interaction, grooming and natural communication.</p><p class="choice-note">Bring binoculars and record behaviours. No feeding. The keeper explains singing, canopy layers, brachiation and threats in the wild.</p><button class="book-btn" data-points="20" data-activity="White-handed Gibbon Keeper Talk">Book · 20 pts</button></article>
-  </div>
 </section>
 
 <footer>Stratified Interbreath — Canopy Breath Zone · concept build, ready for real habitat data</footer>
@@ -604,38 +534,6 @@ species.forEach((s,i)=>{
   `;
   card.addEventListener('click', ()=> card.classList.toggle('flipped'));
   speciesGrid.appendChild(card);
-});
-
-/* ============================================================
-   RESEARCH BOOK + ECO REWARD ACTIVITY
-   ============================================================ */
-const researchReasons = {
-  ecosystem:{title:'They Represent the Tropical Rainforest Ecosystem',rating:'★★★★★',text:'Arboreal primates occupy the emergent layer, upper canopy, mid canopy and understory. Designing for them means designing an entire rainforest ecosystem.',items:['Canopy structure and vegetation layers','Ecological corridors and food sources','Water systems and microclimates','One interconnected living system']},
-  fragmentation:{title:'They Are Highly Sensitive to Habitat Fragmentation',rating:'★★★★★',text:'Many arboreal primates rarely travel on the ground. Broken canopy connections restrict movement, reduce natural behaviour and can increase stress.',items:['Canopy bridges','Habitat corridors','Continuous tree cover','Vertical movement networks']},
-  landscape:{title:'They Depend on Landscape Architecture',rating:'★★★★★',text:'More than an enclosure, their habitat requires trees, forest layering, topography, vegetation diversity, canopy connectivity and ecological succession.',items:['Living trees and varied planting','Terrain with ecological purpose','Connected, evolving forest structure','A strong landscape architecture focus']},
-  biocentric:{title:'They Demonstrate a Bio-centric Design Approach',rating:'★★★★☆',text:'A bio-centric habitat places living organisms before human convenience. Visitor experiences are integrated respectfully around the animals’ needs.',items:['Freedom of movement and behavioural choice','Refuge, privacy and social interaction','Natural foraging opportunities','Environmental complexity']},
-  education:{title:'They Encourage Conservation Education',rating:'★★★★☆',text:'Primates are relatable: visitors can observe parenting, communication, play, cooperation and problem-solving—behaviours that create empathy.',items:['Observe without intrusion','Understand rainforest interdependence','Build conservation awareness']},
-  flagship:{title:'They Are Flagship Species',rating:'★★★★★',text:'Orangutans, siamangs and gibbons are charismatic ambassadors for rainforest conservation. Protecting habitat-dependent species supports the whole ecosystem.',items:['Rainforest trees and birds','Reptiles, insects and pollinators','Freshwater systems','The umbrella species effect']}
-};
-const bookDetail = document.getElementById('bookDetail');
-function renderReason(key){
-  const r = researchReasons[key];
-  bookDetail.innerHTML = `<div class="rating">${r.rating}</div><h3>${r.title}</h3><p>${r.text}</p><ul>${r.items.map(item=>`<li>${item}</li>`).join('')}</ul>`;
-  document.querySelectorAll('.page-tab').forEach(tab=>tab.classList.toggle('active',tab.dataset.reason===key));
-}
-document.querySelectorAll('.page-tab').forEach(tab=>tab.addEventListener('click',()=>renderReason(tab.dataset.reason)));
-renderReason('ecosystem');
-
-let ecoPoints = 0;
-document.querySelectorAll('.book-btn').forEach(button=>{
-  button.addEventListener('click',()=>{
-    if(button.disabled) return;
-    ecoPoints += Number(button.dataset.points);
-    document.getElementById('ecoPoints').textContent = ecoPoints;
-    button.textContent = `Completed · +${button.dataset.points} pts`;
-    button.disabled = true;
-    button.setAttribute('aria-label', `${button.dataset.activity} completed; ${button.dataset.points} points collected`);
-  });
 });
 </script>
 </body>
